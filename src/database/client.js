@@ -8,4 +8,12 @@ const pool = mysql.createPool({
     dateStrings: ['DATE', 'DATETIME', 'TIMESTAMP']
 })
 
+pool.on('connection', (connection) => {
+    connection.query("SET NAMES utf8");
+    connection.query("SET CHARACTER SET utf8");
+    connection.query("SET character_set_connection=utf8");
+});
+
+// module.exports = pool;
+
 module.exports = pool;
